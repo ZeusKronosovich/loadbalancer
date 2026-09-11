@@ -1,0 +1,661 @@
+:root {
+    --bg-primary: #0f1117;
+    --bg-secondary: #1a1d27;
+    --bg-tertiary: #252a36;
+    --bg-card: #1e212a;
+    --bg-hover: #2a2f3d;
+    
+    --text-primary: #e8edf5;
+    --text-secondary: #94a3b8;
+    --text-muted: #64748b;
+    --text-inverse: #0f1117;
+    
+    --border-color: #2a2f3d;
+    --border-light: #323845;
+    
+    --accent-blue: #3b82f6;
+    --accent-green: #22c55e;
+    --accent-red: #ef4444;
+    --accent-yellow: #f59e0b;
+    --accent-purple: #8b5cf6;
+    --accent-pink: #ec4899;
+    --accent-cyan: #14b8a6;
+    
+    --shadow-color: rgba(0, 0, 0, 0.4);
+    --scrollbar-track: #1a1d27;
+    --scrollbar-thumb: #2a2f3d;
+    --scrollbar-thumb-hover: #3a4050;
+    
+    --success-bg: rgba(34, 197, 94, 0.15);
+    --error-bg: rgba(239, 68, 68, 0.15);
+    --warning-bg: rgba(245, 158, 11, 0.15);
+    --info-bg: rgba(59, 130, 246, 0.15);
+}
+
+[data-theme="light"] {
+    --bg-primary: #f4f7fc;
+    --bg-secondary: #ffffff;
+    --bg-tertiary: #f1f5f9;
+    --bg-card: #ffffff;
+    --bg-hover: #e8edf5;
+    
+    --text-primary: #1e293b;
+    --text-secondary: #475569;
+    --text-muted: #94a3b8;
+    --text-inverse: #ffffff;
+    
+    --border-color: #e2e8f0;
+    --border-light: #e8edf5;
+    
+    --shadow-color: rgba(0, 0, 0, 0.08);
+    --scrollbar-track: #f1f1f1;
+    --scrollbar-thumb: #c1c7cd;
+    --scrollbar-thumb-hover: #a8b0b8;
+    
+    --success-bg: rgba(34, 197, 94, 0.1);
+    --error-bg: rgba(239, 68, 68, 0.1);
+    --warning-bg: rgba(245, 158, 11, 0.1);
+    --info-bg: rgba(59, 130, 246, 0.1);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Helvetica', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--scrollbar-track);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--scrollbar-thumb);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--scrollbar-thumb-hover);
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0.5;
+    }
+}
+
+@keyframes App-logo-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes glow {
+    0%, 100% {
+        box-shadow: 0 0 5px var(--accent-blue);
+    }
+    50% {
+        box-shadow: 0 0 20px var(--accent-blue);
+    }
+}
+
+.MuiPaper-root {
+    animation: fadeInUp 0.5s ease;
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.weight-fade-in {
+    animation: fadeIn 0.3s ease;
+}
+
+.status-pulse {
+    animation: pulse 2s infinite;
+}
+
+.App {
+    text-align: center;
+}
+
+.App-logo {
+    height: 40vmin;
+    pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
+    }
+}
+
+.App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+}
+
+.App-link {
+    color: #61dafb;
+}
+
+.dashboard-container {
+    min-height: 100vh;
+    background-color: var(--bg-primary);
+    padding: 32px 0;
+    transition: background-color 0.3s ease;
+}
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 32px;
+}
+
+.dashboard-header-left {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.dashboard-loading {
+    display: flex;
+    justify-content: center;
+    padding: 64px 0;
+    color: var(--text-secondary);
+}
+
+.dashboard-loading-text {
+    margin-left: 16px;
+    color: var(--text-secondary);
+}
+
+.stats-card {
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    transition: all 0.3s ease;
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+.stats-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.stats-icon-box {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stats-title {
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+}
+
+.stats-value {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.backends-table-row {
+    transition: all 0.3s ease;
+}
+
+.backends-table-row-inactive {
+    opacity: 0.6;
+}
+
+.backends-table-row:hover {
+    background-color: var(--bg-hover) !important;
+}
+
+.backends-table-empty {
+    padding: 32px 0;
+    text-align: center;
+    color: var(--text-secondary);
+}
+
+.strategy-button {
+    border-radius: 30px;
+    text-transform: none;
+    transition: all 0.2s ease;
+}
+
+.strategy-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+.strategy-button-active {
+    font-weight: 600;
+}
+
+.strategy-current-chip {
+    font-weight: 600;
+}
+
+.weight-manager-container {
+    padding: 24px;
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.weight-manager-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.weight-chip {
+    cursor: pointer;
+}
+
+.weight-controls {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    margin-top: 16px;
+}
+
+.weight-slider {
+    flex: 1;
+}
+
+.weight-input {
+    width: 80px;
+}
+
+.weight-apply-button {
+    border-radius: 20px;
+}
+
+.weight-list-container {
+    margin-top: 16px;
+    padding: 16px;
+    background-color: var(--bg-tertiary);
+    border-radius: 8px;
+    transition: background-color 0.3s ease;
+}
+
+.weight-list-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 4px 0;
+    color: var(--text-secondary);
+}
+
+.chart-container {
+    padding: 16px;
+    height: 320px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.chart-container:hover {
+    box-shadow: 0 4px 16px var(--shadow-color);
+}
+
+.chart-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+}
+
+.chart-title {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.chart-body {
+    height: calc(100% - 40px);
+    position: relative;
+}
+
+.chart-metric-chip {
+    position: absolute;
+    top: 8px;
+    right: 16px;
+    font-weight: 600;
+}
+
+.add-backend-form {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.add-backend-host-input {
+    min-width: 150px;
+}
+
+.add-backend-host-input .MuiInputBase-root,
+.add-backend-port-input .MuiInputBase-root {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+.add-backend-host-input .MuiInputLabel-root,
+.add-backend-port-input .MuiInputLabel-root {
+    color: var(--text-secondary);
+}
+
+.add-backend-port-input {
+    width: 120px;
+}
+
+.add-backend-submit {
+    border-radius: 20px;
+}
+
+.add-backend-hint {
+    display: block;
+    margin-top: 16px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.status-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 8px;
+}
+
+.status-dot-connected {
+    background-color: var(--accent-green);
+    animation: pulse 2s infinite;
+}
+
+.status-dot-connecting {
+    background-color: var(--accent-yellow);
+}
+
+.status-dot-disconnected {
+    background-color: var(--accent-red);
+}
+
+.snackbar-alert {
+    width: 100%;
+    box-shadow: 0 4px 12px var(--shadow-color);
+}
+
+.dialog-delete-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.dialog-delete-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+.MuiPaper-root {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-color);
+}
+
+.MuiTypography-root {
+    color: var(--text-primary);
+}
+
+.MuiTypography-colorTextSecondary {
+    color: var(--text-secondary) !important;
+}
+
+.MuiTableRow-root {
+    color: var(--text-primary);
+}
+
+.MuiTableCell-root {
+    color: var(--text-primary);
+    border-bottom-color: var(--border-color);
+}
+
+.MuiTableHead-root .MuiTableCell-root {
+    color: var(--text-secondary);
+    font-weight: 600;
+}
+
+.MuiInputBase-root {
+    color: var(--text-primary);
+    background-color: var(--bg-secondary);
+}
+
+.MuiInputBase-root fieldset {
+    border-color: var(--border-color);
+}
+
+.MuiInputBase-root:hover fieldset {
+    border-color: var(--accent-blue);
+}
+
+.MuiInputLabel-root {
+    color: var(--text-secondary);
+}
+
+.MuiInputLabel-root.Mui-focused {
+    color: var(--accent-blue);
+}
+
+.MuiChip-root {
+    color: var(--text-primary);
+}
+
+.MuiChip-outlined {
+    border-color: var(--border-color);
+}
+
+.MuiChip-filled {
+    background-color: var(--bg-tertiary);
+}
+
+.MuiButton-outlined {
+    border-color: var(--border-color);
+    color: var(--text-primary);
+}
+
+.MuiButton-outlined:hover {
+    background-color: var(--bg-hover);
+}
+
+.MuiButton-contained {
+    color: var(--text-inverse);
+}
+
+.MuiAlert-root {
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+}
+
+.MuiAlert-standardError {
+    background-color: var(--error-bg);
+    color: var(--accent-red);
+}
+
+.MuiAlert-standardSuccess {
+    background-color: var(--success-bg);
+    color: var(--accent-green);
+}
+
+.MuiAlert-standardWarning {
+    background-color: var(--warning-bg);
+    color: var(--accent-yellow);
+}
+
+.MuiAlert-standardInfo {
+    background-color: var(--info-bg);
+    color: var(--accent-blue);
+}
+
+.MuiDialog-paper {
+    background-color: var(--bg-card) !important;
+    color: var(--text-primary) !important;
+}
+
+.MuiDialogTitle-root {
+    color: var(--text-primary);
+}
+
+.MuiDialogContent-root {
+    color: var(--text-secondary);
+}
+
+.MuiTooltip-tooltip {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.MuiSlider-root {
+    color: var(--accent-blue);
+}
+
+.MuiSlider-track {
+    background-color: var(--accent-blue);
+}
+
+.MuiSlider-rail {
+    background-color: var(--border-color);
+}
+
+.MuiSlider-markLabel {
+    color: var(--text-secondary);
+}
+
+.MuiIconButton-root {
+    color: var(--text-secondary);
+}
+
+.MuiIconButton-root:hover {
+    background-color: var(--bg-hover);
+}
+
+.MuiBadge-badge {
+    color: var(--text-inverse);
+}
+
+.MuiSnackbar-root .MuiAlert-root {
+    background-color: var(--bg-secondary) !important;
+    color: var(--text-primary) !important;
+}
+
+@media (max-width: 600px) {
+    .dashboard-container {
+        padding: 16px 0;
+    }
+    
+    .dashboard-header {
+        flex-direction: column;
+        gap: 12px;
+        align-items: flex-start;
+    }
+    
+    .stats-card {
+        padding: 12px;
+    }
+    
+    .stats-value {
+        font-size: 1rem;
+    }
+    
+    .add-backend-form {
+        flex-direction: column;
+        gap: 12px;
+    }
+    
+    .add-backend-host-input,
+    .add-backend-port-input {
+        min-width: unset;
+        width: 100%;
+    }
+    
+    .weight-controls {
+        flex-direction: column;
+        gap: 16px;
+    }
+    
+    .weight-slider {
+        width: 100%;
+    }
+    
+    .chart-container {
+        height: 240px;
+    }
+}
+
+@media (max-width: 900px) {
+    .dashboard-header {
+        flex-wrap: wrap;
+    }
+}
